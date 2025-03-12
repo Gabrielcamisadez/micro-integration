@@ -1,4 +1,4 @@
-NETBOX_URL = "https://srvnetboxdsv-trf1.trf1.gov.br/api/dcim/devices/"
+NETBOX_URL = "https://srvnetboxdsv-trf1.trf1.gov.br/api/dcim/devices/?limit=1000"
 NETBOX_TOKEN = "941d9b5b9806a62c420c53c2787af560b36f06f7"
 
 GLPI_URL = "http://localhost:9090/apirest.php/Computer?range=170-200"

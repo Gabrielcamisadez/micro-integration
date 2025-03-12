@@ -55,12 +55,22 @@ class NETBOX():
                 rich.print(device)
                 # rich.print(device["id"], device["role"]["name"])
 
+    def get_device_role(self):
+        import requests
+        r1 = requests.get(self.url, headers=netbox_headers, verify=False)
+        response = r1.json()
+
+        if isinstance(response, dict):
+            for device in response['results']:
+                rich.print(device["id"], device["name"], device["role"]["name"])                
+
 
 
                 
 
 n = NETBOX()
-n.get_device()        
+# n.get_device()        
+n.get_device_role()
 
 g = GLPI()        
 # g.get_init_session()
