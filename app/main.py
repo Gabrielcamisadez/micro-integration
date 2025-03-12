@@ -32,10 +32,36 @@ class GLPI():
             for device in response:
                 device.pop("links")
                 rich.print(device)
+
+# -----------------------------------------------------------------------------
+
+netbox_headers = {
+    "Authorization": f"Token {NETBOX_TOKEN}",
+    "Content-Type": "application/json"
+}
+
+class NETBOX():
+    def __init__(self):
+        self.url = NETBOX_URL
+        self.token = NETBOX_TOKEN
+
+    def get_device(self):
+        import requests 
+        r1 = requests.get(self.url, headers=netbox_headers, verify=False)
+        response = r1.json()
+
+        if isinstance(response, list):
+            for device in response:
+                rich.print(device)
+        
+        if isinstance(response, dict):
+            rich.print(response)
+
                 
 
-        
+n = NETBOX()
+n.get_device()        
 
 g = GLPI()        
 # g.get_init_session()
-g.get_device()
+# g.get_device()
