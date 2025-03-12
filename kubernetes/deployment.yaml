@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: glpi-netbox-sync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: glpi-netbox-sync
+  template:
+    metadata:
+      labels:
+        app: glpi-netbox-sync
+    spec:
+      containers:
+      - name: glpi-netbox-sync
+        image: glpi-netbox-sync:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 7070
