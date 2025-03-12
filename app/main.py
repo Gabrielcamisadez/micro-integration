@@ -51,8 +51,9 @@ class NETBOX():
         response = r1.json()
     
         if isinstance(response, dict):
-            for device in response["results"]:
-                rich.print(device["name"])
+            for device in response['results']:
+                rich.print(device)
+                # rich.print(device["id"], device["role"]["name"])
 
 
 
