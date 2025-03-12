@@ -49,13 +49,12 @@ class NETBOX():
         import requests 
         r1 = requests.get(self.url, headers=netbox_headers, verify=False)
         response = r1.json()
-
-        if isinstance(response, list):
-            for device in response:
-                rich.print(device)
-        
+    
         if isinstance(response, dict):
-            rich.print(response)
+            for device in response["results"]:
+                rich.print(device["name"])
+
+
 
                 
 
